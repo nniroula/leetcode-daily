@@ -9,23 +9,27 @@ class Solution {
     public String longestCommonPrefix(String[] strs) {
         String prefix = "";
 
-        String firstElem = strs[0]; // take first element as start prefix string
-        // take characters from first elem and compare each one of them with chars from other elems
-        // if match found, concatenate to the prefix
-        for(int i = 0; i < firstElem.length(); i++){
-            char currentChar = firstElem.charAt(i);
+        if(strs.length == 1){
+            prefix = strs[0];
+        }else{
+            String firstElem = strs[0]; // take first element as start prefix string
+            // take characters from first elem and compare each one of them with chars from other elems
+            // if match found, concatenate to the prefix
+            for(int i = 0; i < firstElem.length(); i++){
+                char currentChar = firstElem.charAt(i);
 
-            boolean currentPrefix = false;
-            for(int j = i + 1; j < strs.length; j++ ){
-                String nextArrElem = strs[j];  // strs[j] gives next element in the strs array
-                if(nextArrElem.charAt(i) == currentChar){
-                    currentPrefix = true;
-                }else{
-                    currentPrefix = false;
+                boolean currentPrefix = false;
+                for(int j = i + 1; j < strs.length; j++ ){
+                    String nextArrElem = strs[j];  // strs[j] gives next element in the strs array
+                    if(nextArrElem.charAt(i) == currentChar){
+                        currentPrefix = true;
+                    }else{
+                        currentPrefix = false;
+                    }
                 }
-            }
-            if(currentPrefix == true){
-                prefix+= currentChar;
+                if(currentPrefix == true){
+                    prefix+= currentChar;
+                }
             }
         }
 
